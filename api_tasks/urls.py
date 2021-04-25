@@ -5,5 +5,5 @@ from django.conf.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('authen/', include('djoser.urls.jwt')),
+    path('authen/', include('djoser.urls.jwt'))
 ]
