@@ -4,7 +4,7 @@ import axios from 'axios';
 const apiUrl = 'http://localhost:8000/';
 const token = localStorage.localJWT;
 
-export const fetchAsyncLogin = createAsyncThunk('Login/post', async (auth) => {
+export const fetchAsyncLogin = createAsyncThunk('login/post', async (auth) => {
     const res = await axios.post(`${apiUrl}authen/jwt/create`, auth, {
         headers: {
             'Content-Type': 'application/json',
@@ -13,8 +13,8 @@ export const fetchAsyncLogin = createAsyncThunk('Login/post', async (auth) => {
     return res.data;
 });
 
-export const fetchAsyncRegister = createAsyncThunk('Login/register', async (auth) => {
-    const res = await axios.post(`${apiUrl}api/regiater`, auth, {
+export const fetchAsyncRegister = createAsyncThunk('login/register', async (auth) => {
+    const res = await axios.post(`${apiUrl}api/register/`, auth, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -22,8 +22,8 @@ export const fetchAsyncRegister = createAsyncThunk('Login/register', async (auth
     return res.data;
 });
 
-export const fetchAsyncProf = createAsyncThunk('Login/get', async () => {
-    const res = await axios.get(`${apiUrl}api/myself`, {
+export const fetchAsyncProf = createAsyncThunk('login/get', async () => {
+    const res = await axios.get(`${apiUrl}api/myself/`, {
         headers: {
             Authorization: `JWT ${token}`, 
         },
@@ -32,13 +32,13 @@ export const fetchAsyncProf = createAsyncThunk('Login/get', async () => {
 });
 
 const loginSlice = createSlice({
-    name: 'Login',
+    name: 'login',
     initialState: {
         authen: {
             username: '',
             password: '',
         },
-        isLoginview: true,
+        isLoginView: true,
         profile: {
             id: 0,
             username: '',
@@ -58,7 +58,7 @@ const loginSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
             localStorage.setItem('localJWT', action.payload.access);
-            action.payload.access && (window.location.href = '/tasks')
+            action.payload.access && (window.location.href = '/tasks');
         });
         builder.addCase(fetchAsyncProf.fulfilled, (state, action) => {
             state.profile = action.payload;
@@ -68,6 +68,6 @@ const loginSlice = createSlice({
 export const {editUsername, editPassword, toggleMode} = loginSlice.actions;
 export const selectAuthen = (state) => state.login.authen;
 export const selectIsLoginView = (state) => state.login.isLoginView;
-export const sekectProfile = (state) => state.login.profile;
+export const selectProfile = (state) => state.login.profile;
 
 export default loginSlice.reducer;

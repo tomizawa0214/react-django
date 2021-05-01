@@ -1,0 +1,49 @@
+h1 {
+    margin: 30px 0 20px 0;
+    text-align: center;
+    color: #fff;
+    font-weight: normal;
+    font-family: 'Comic Neue', cursive;
+}
+span {
+    color: #fff;
+    font-size: 15px;
+    font-family: 'Comic Neue', cursive;
+}
+.containerLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #292f38;
+}
+.appLogin {
+    padding: 30px;
+    width: 25%;
+    min-width: 350px;
+    height: 450px;
+    background-color: #555;
+    border-radius: 5px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .5);
+}
+
+.inputLog {
+    width: 85%;
+    margin: 20px;
+    font-family: 'Comic Neue', cursive;
+    background-color: #555;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #333;
+    font-size: 1.4rem;
+    color: #ccc;
+}
+.switch {
+    margin: 20px;
+    display: block;
+    text-align: center;
+}
+.switchText {
+    display: block;
+    text-align: center;
+}
