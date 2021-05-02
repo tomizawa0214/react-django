@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styles from './TaskDetails.module.css';
 import { useSelector } from 'react-redux';
 import { selectSelectedTask } from './taskSlice';
